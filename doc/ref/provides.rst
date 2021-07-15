@@ -109,10 +109,6 @@ Core
     Allows providing extension for shipment creation in admin.
     Should implement the `~shuup.admin.form_modifier.FormModifier` interface.
 
-``admin_extend_attribute_form``
-    Allows providing extension for the product attribute form in admin.
-    Should implement the `~shuup.admin.form_modifier.FormModifier` interface.
-
 ``admin_order_information``
     Additional information rows for Order detail page. Provide objects should inherit
     from `~shuup.admin.modules.orders.utils.OrderInformation` class.
@@ -266,6 +262,12 @@ Core
 ``pricing_module``
     Pricing module classes; the pricing module in use is set with the ``SHUUP_PRICING_MODULE`` setting.
 
+``product_kind_specs``
+    List of classes that define the product kinds that can be used in the platform.
+    The classes must implement the `~shuup.core.specs.product_kind.ProductKindSpec` base class.
+    It is specially used to control which supplier modules can handle certain types of products
+    and also to hide products from the normal admin product list.
+
 ``service_behavior_component_form``
     Forms for creating service behavior components in Shop Admin.  When
     creating a custom `service behavior component
@@ -313,6 +315,10 @@ Core
 
 ``xtheme_resource_injection``
     XTheme resources injection function that takes current context and content as parameters.
+
+``xtheme_snippet_blocker``
+    Blocker classes that can prevent a global snippet from being injected
+
 
 Campaigns Provide Categories
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

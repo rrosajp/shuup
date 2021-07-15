@@ -7,7 +7,7 @@
 # LICENSE file in the root directory of this source tree.
 from django import forms
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language, ugettext_lazy as _
 from filer.models import File
 
 from shuup.admin.forms.widgets import ImageChoiceWidget
@@ -49,6 +49,7 @@ class ImagePlugin(TemplatedPlugin):
     identifier = "images"
     name = _("Image")
     template_name = "shuup/xtheme/plugins/image.jinja"
+    cacheable = True
     fields = [
         ("title", TranslatableField(label=_("Title"), required=False)),
         ("image_id", ImageIDField(label=_("Image"), required=False)),
@@ -76,6 +77,15 @@ class ImagePlugin(TemplatedPlugin):
             ),
         ),
     ]
+
+    def get_cache_key(self, context, **kwargs) -> str:
+        image_id = self.config.get("image_id", None)
+        title = self.get_translated_value("title", "")
+        url = self.config.get("url", None)
+        full_width = self.config.get("full_width", None)
+        width = self.config.get("width", None)
+        height = self.config.get("height", None)
+        return str((get_language(), image_id, title, url, full_width, width, height))
 
     def get_context_data(self, context):
         """

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christian Hess, 2021
 # Melanie Missbach <melanie@buyhappy.de>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 13:32+0000\n"
-"PO-Revision-Date: 2021-04-09 21:40+0000\n"
-"Last-Translator: Melanie Missbach <melanie@buyhappy.de>\n"
+"POT-Creation-Date: 2021-07-06 22:55+0000\n"
+"PO-Revision-Date: 2021-07-07 18:01+0000\n"
+"Last-Translator: Christian Hess\n"
 "Language-Team: German (http://www.transifex.com/shuup/shuup/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,6 +67,12 @@ msgstr "Wähle die Designs aus, in die dieses Snippet eingefügt werden soll. La
 msgid "Select the location of the page to inject the snippet."
 msgstr "Wähle den Ort der Seite aus, an dem das Snippet eingefügt werden soll."
 
+msgid "Name"
+msgstr ""
+
+msgid "Filter by name..."
+msgstr ""
+
 msgid "Location"
 msgstr "Ort"
 
@@ -95,6 +102,9 @@ msgstr "Stylesheets"
 
 msgid "The fonts, colors, and styles to use with your theme."
 msgstr "Die Schriftarten, Farben und Stile, die für Dein Desing verwendet werden sollen."
+
+msgid "Failed to render the plugin"
+msgstr "Fehler beim Rendern des Plugins"
 
 msgid "Content in this box is shown to all user types without limitations."
 msgstr "Der Inhalt in diesem Feld wird allen Benutzertypen ohne Einschränkungen angezeigt."
@@ -174,6 +184,12 @@ msgstr "Daten"
 msgid "Theme configuration for %s"
 msgstr "Design-Konfiguration für %s"
 
+msgid "snippet name"
+msgstr ""
+
+msgid "Untitled"
+msgstr ""
+
 msgid "location"
 msgstr "Standort"
 
@@ -188,9 +204,6 @@ msgstr "Designs"
 
 msgid "Snippet"
 msgstr "Snippet"
-
-msgid "Snippet for {} in {}"
-msgstr "Snippet für {} in {}"
 
 msgid "Plugin"
 msgstr "Plugin"
@@ -299,6 +312,9 @@ msgstr "Artikelauswahl (asynchron)"
 msgid "In-Place Snippet"
 msgstr "In-Place-Snippet"
 
+msgid "Resource snippet for start of head"
+msgstr ""
+
 msgid "Resource snippet for end of head"
 msgstr "Ressourcen-Snippet für das Kopfende"
 
@@ -313,10 +329,10 @@ msgstr "URL"
 
 #, python-format
 msgid "%(name)s Ordering"
-msgstr "%(name)s Bestellung"
+msgstr "%(name)s Reihenfolge"
 
 msgid "Ordering"
-msgstr "Bestellen"
+msgstr "Reihenfolge"
 
 msgid "Social Media Links"
 msgstr "Social Media Links"

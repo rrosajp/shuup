@@ -16,8 +16,9 @@ from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import ImproperlyConfigured
 from django.http.response import HttpResponseForbidden
 from django.utils.encoding import force_str, force_text
+from django.utils.html import escape
 from django.utils.http import urlencode
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from shuup.admin.module_registry import get_modules
 from shuup.admin.shop_provider import get_shop
@@ -57,14 +58,14 @@ class AdminRegexURLPattern(URLPattern):
         """
         if request.is_ajax():
             return HttpResponseForbidden(json.dumps({"error": force_text(reason)}))
-        error_params = urlencode({"error": reason})
+        error_params = urlencode({"error": force_text(reason)})
         login_url = force_str(reverse("shuup_admin:login") + "?" + error_params)
         resp = redirect_to_login(next=request.path, login_url=login_url)
         if is_authenticated(request.user):
             # Instead of redirecting to the login page, let the user know what's wrong with
             # a helpful link.
             raise (
-                Problem(_("Can't view this page. %(reason)s") % {"reason": reason}).with_link(
+                Problem(_("Can't view this page. %(reason)s") % {"reason": escape(reason)}).with_link(
                     url=resp.url, title=_("Log in with different credentials...")
                 )
             )

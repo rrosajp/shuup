@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, 2.x ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, 2.x ]
 
 jobs:
 
@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.6
-    - name: Install dependencies
+    - name: Install dev dependencies
       run: pip install -r requirements-dev.txt
     - name: Run sanity check
       run: _misc/check_sanity.py
@@ -49,6 +49,8 @@ jobs:
       run: sudo apt-get -y install gettext
     - name: Install test dependencies
       run: pip install -r requirements-tests.txt
+    - name: Create logs folder
+      run: mkdir .unit_tests
     - name: Run migrations
       run: python -m shuup_workbench migrate
     - name: Run makemessages
@@ -60,38 +62,52 @@ jobs:
     - name: Code coveragerc
       run: codecov
 
-  # browser:
-  #   name: "Test Shuup with browser"
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     SHUUP_BROWSER_TESTS: 1
-  #     SHUUP_TESTS_CI: 1
-  #     SHUUP_WORKBENCH_DISABLE_MIGRATIONS: 1
-  #   strategy:
-  #     matrix:
-  #       python-version: ['3.6']
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Set up Python
-  #     uses: actions/setup-python@v1
-  #     with:
-  #       python-version: ${{ matrix.python-version }}
-  #   - name: Setup Chrome Driver
-  #     uses: nanasess/setup-chromedriver@master
-  #   - name: Install gettext
-  #     run: sudo apt-get -y install gettext
-  #   - name: Build static files
-  #     run: python setup.py build_resources
-  #   - name: Install test dependencies
-  #     run: pip install -r requirements-tests.txt
-  #   - name: Build messages
-  #     run: python setup.py build_messages
-  #   - name: Set env
-  #     run: echo "DISPLAY=:99.0" >> $GITHUB_ENV
-  #   - name: Run tests
-  #     run: py.test -v --nomigrations shuup_tests/browser/ --splinter-webdriver=chrome --splinter-screenshot-dir=.browser_tests/
-  #   - uses: actions/upload-artifact@v2
-  #     if: failure()
-  #     with:
-  #       name: browser_tests
-  #       path: .browser_tests/*.*
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: unit_tests
+        path: .unit_tests/*.*
+
+  browser:
+    name: "Test Shuup with browser"
+    runs-on: ubuntu-latest
+    env:
+      SHUUP_BROWSER_TESTS: 1
+      SHUUP_TESTS_CI: 1
+    strategy:
+      matrix:
+        python-version: ['3.6']
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: "Setup Firefox driver"
+      uses: browser-actions/setup-geckodriver@latest
+    - run: geckodriver --version
+
+    - name: Install gettext
+      run: sudo apt-get -y install gettext
+
+    - name: Build static files
+      run: python setup.py build_resources
+
+    - name: Install test dependencies
+      run: pip install -r requirements-tests.txt
+
+    - name: Compile messages
+      run: python -m shuup_workbench compilemessages
+
+    - name: Create logs folder
+      run: mkdir .unit_tests
+
+    - name: Run tests
+      run: py.test -v --nomigrations shuup_tests/browser/front shuup_tests/browser/admin --splinter-headless --splinter-screenshot-dir=.unit_tests/
+
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: unit_tests
+        path: .unit_tests/*.*

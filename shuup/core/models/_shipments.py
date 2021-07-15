@@ -12,6 +12,7 @@ from django.db import models
 from django.db.transaction import atomic
 from django.utils.crypto import get_random_string
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 from enumfields import Enum, EnumIntegerField
 
@@ -70,10 +71,10 @@ class Shipment(ShuupModel):
     tracking_url = models.URLField(blank=True, verbose_name=_("tracking url"))
     description = models.CharField(max_length=255, blank=True, verbose_name=_("description"))
     volume = MeasurementField(
-        unit=get_shuup_volume_unit(), verbose_name=_("volume ({})".format(get_shuup_volume_unit()))
+        unit=get_shuup_volume_unit(), verbose_name=format_lazy(_("volume ({})"), get_shuup_volume_unit())
     )
     weight = MeasurementField(
-        unit=settings.SHUUP_MASS_UNIT, verbose_name=_("weight ({})".format(settings.SHUUP_MASS_UNIT))
+        unit=settings.SHUUP_MASS_UNIT, verbose_name=format_lazy(_("weight ({})"), settings.SHUUP_MASS_UNIT)
     )
     identifier = InternalIdentifierField(unique=True)
     type = EnumIntegerField(ShipmentType, default=ShipmentType.OUT, verbose_name=_("type"))
@@ -99,7 +100,7 @@ class Shipment(ShuupModel):
     def save(self, *args, **kwargs):
         super(Shipment, self).save(*args, **kwargs)
         for product_id in self.products.values_list("product_id", flat=True):
-            self.supplier.module.update_stock(product_id=product_id)
+            self.supplier.update_stock(product_id=product_id)
 
     def delete(self, using=None):
         raise NotImplementedError("Error! Not implemented: `Shipment` -> `delete()`. Use `soft_delete()` instead.")
@@ -111,7 +112,7 @@ class Shipment(ShuupModel):
         self.status = ShipmentStatus.DELETED
         self.save(update_fields=["status"])
         for product_id in self.products.values_list("product_id", flat=True):
-            self.supplier.module.update_stock(product_id=product_id)
+            self.supplier.update_stock(product_id=product_id)
         if self.order:
             self.order.update_shipping_status()
         shipment_deleted.send(sender=type(self), shipment=self)
@@ -166,7 +167,7 @@ class Shipment(ShuupModel):
         if self.type == ShipmentType.IN:
             for product_id, quantity in self.products.values_list("product_id", "quantity"):
                 purchase_price = purchase_prices.get(product_id, None) if purchase_prices else None
-                self.supplier.module.adjust_stock(
+                self.supplier.adjust_stock(
                     product_id=product_id, delta=quantity, purchase_price=purchase_price or 0, created_by=created_by
                 )
 
@@ -182,10 +183,10 @@ class ShipmentProduct(ShuupModel):
     quantity = QuantityField(verbose_name=_("quantity"))
 
     unit_volume = MeasurementField(
-        unit=get_shuup_volume_unit(), verbose_name=_("unit volume ({})".format(get_shuup_volume_unit()))
+        unit=get_shuup_volume_unit(), verbose_name=format_lazy(_("unit volume ({})"), get_shuup_volume_unit())
     )
     unit_weight = MeasurementField(
-        unit=settings.SHUUP_MASS_UNIT, verbose_name=_("unit weight ({})".format(settings.SHUUP_MASS_UNIT))
+        unit=settings.SHUUP_MASS_UNIT, verbose_name=format_lazy(_("unit weight ({})"), settings.SHUUP_MASS_UNIT)
     )
 
     class Meta:

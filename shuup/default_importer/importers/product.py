@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 import decimal
 import os
 import six
+from django.db import IntegrityError
 from django.db.models import ForeignKey, ManyToManyField, Q
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -26,10 +27,12 @@ from shuup.core.models import (
     SalesUnit,
     ShopProduct,
     Supplier,
+    SupplierModule,
     TaxClass,
 )
 from shuup.importer.importing import DataImporter, ImporterExampleFile, ImportMetaBase
 from shuup.importer.utils import fold_mapping_name
+from shuup.simple_supplier.module import SimpleSupplierModule
 from shuup.utils.django_compat import force_text
 from shuup.utils.djangoenv import has_installed
 from shuup.utils.properties import PriceProperty
@@ -132,8 +135,9 @@ class ProductMetaBase(ImportMetaBase):
 
             product.mode = ProductMode.VARIATION_CHILD
             product.link_to_parent(parent_product, variables)
-        except Exception as e:
-            sess.log_messages.append(str(e))
+
+        except IntegrityError as err:
+            sess.log_messages.append(str(err))
 
     def _handle_image(self, shop, product, image_source, is_primary=False):
         product_media = None
@@ -260,21 +264,25 @@ class ProductMetaBase(ImportMetaBase):
             supplier.stock_managed = True
             supplier_changed = True
 
-        if not supplier.module_identifier and has_installed("shuup.simple_supplier"):
-            supplier.module_identifier = "simple_supplier"
+        if not supplier.supplier_modules.all().exists() and has_installed("shuup.simple_supplier"):
+            supplier_module = SupplierModule.objects.get_or_create(module_identifier=SimpleSupplierModule.identifier)[0]
+            supplier.supplier_modules.add(supplier_module)
             supplier_changed = True
 
-        if not supplier.module_identifier:
+        if not supplier.supplier_modules:
             msg = _("No supplier module set, please check that the supplier module is set.")
             sess.log_messages.append(msg)
             return
 
         if supplier_changed:
+            supplier.full_clean()
             supplier.save()
 
         product = sess.instance
         stock_status = supplier.get_stock_status(product.pk)
-        stock_delta = decimal.Decimal(qty) - stock_status.logical_count
+        stock_delta = decimal.Decimal(qty)
+        if stock_status:
+            stock_delta = decimal.Decimal(qty) - stock_status.logical_count
 
         if stock_delta != 0:
             supplier.adjust_stock(product.pk, stock_delta)
@@ -326,6 +334,7 @@ class ProductMetaBase(ImportMetaBase):
                 else:
                     setattr(shop_product, field_name, value)
 
+        shop_product.full_clean()
         shop_product.save()
 
         # add shop relation to the manufacturer
@@ -350,8 +359,8 @@ class ProductMetaBase(ImportMetaBase):
 
             if isinstance(related_field, ForeignKey):
                 try:
-                    value = int(value)  # this is because xlrd causes 1 to be 1.0
-                except Exception:
+                    value = int(value or 0)  # this is because xlrd causes 1 to be 1.0
+                except (TypeError, ValueError):
                     pass
                 value = relmapper.fk_cache.get(str(value))
                 break

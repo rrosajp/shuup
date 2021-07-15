@@ -2,18 +2,19 @@
 # Copyright (C) 2018 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
-#
+# 
 # Translators:
 # Jiechao Li <jiechao.li@sesamechat.com>, 2019
-#
+# Christian Hess, 2021
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 17:55+0000\n"
+"POT-Creation-Date: 2021-07-06 22:55+0000\n"
 "PO-Revision-Date: 2018-05-29 19:55+0000\n"
-"Last-Translator: Jiechao Li <jiechao.li@sesamechat.com>, 2019\n"
+"Last-Translator: Christian Hess, 2021\n"
 "Language-Team: Chinese (Mandarin) (https://www.transifex.com/shuup/teams/55306/cmn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,6 +122,14 @@ msgid ""
 "Comma separated list of cookies names, prefix or suffix that will be "
 "included in this category, e.g. _ga, mysession, user_c_"
 msgstr "逗号分隔的cookie名称、前缀或后缀列表，这些名称或后缀将包括在此类别中，例如：_ga、mysession、user_c_"
+
+msgid "Snippets to block if not consented"
+msgstr ""
+
+msgid ""
+"Select the snippets that shouldn't be injected if the cookie is not "
+"consented."
+msgstr ""
 
 msgid "name"
 msgstr "名称"

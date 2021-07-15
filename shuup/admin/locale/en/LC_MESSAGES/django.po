@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 10:42+0000\n"
+"POT-Creation-Date: 2021-06-17 12:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -802,7 +802,10 @@ msgstr ""
 msgid "Shipping Status"
 msgstr ""
 
-msgid "Total"
+msgid "Total, incl. tax"
+msgstr ""
+
+msgid "Total, excl. tax"
 msgstr ""
 
 #, python-format
@@ -907,6 +910,12 @@ msgstr ""
 msgid "Full refund created."
 msgstr ""
 
+msgid "Description"
+msgstr ""
+
+msgid "Tracking Code"
+msgstr ""
+
 msgid "Tracking URL"
 msgstr ""
 
@@ -942,9 +951,6 @@ msgid "ID"
 msgstr ""
 
 msgid "Supplier"
-msgstr ""
-
-msgid "Tracking Code"
 msgstr ""
 
 #, python-brace-format
@@ -1535,10 +1541,6 @@ msgstr ""
 msgid "Indicates whether this supplier is approved for the shop."
 msgstr ""
 
-#, python-format
-msgid "No %s module"
-msgstr ""
-
 msgid "It is not possible to manage inventory when no module is selected."
 msgstr ""
 
@@ -1549,7 +1551,11 @@ msgstr ""
 msgid "Success! %s has been marked deleted."
 msgstr ""
 
-msgid "Module"
+msgid "Modules"
+msgstr ""
+
+#, python-format
+msgid "No %s module"
 msgstr ""
 
 msgid "Shuup Support"
@@ -1582,6 +1588,33 @@ msgid "Rate"
 msgstr ""
 
 msgid "Users"
+msgstr ""
+
+msgid "Allow the user to change the passwords of other users."
+msgstr ""
+
+msgid "Allow the user send the reset password email."
+msgstr ""
+
+msgid "Allow the user to change the permission groups of other users."
+msgstr ""
+
+msgid "Allow the user to see a user detail."
+msgstr ""
+
+msgid "Allow the user to create a new user."
+msgstr ""
+
+msgid "Allow the user to list the users."
+msgstr ""
+
+msgid "Allow the user to impersonate a different user."
+msgstr ""
+
+msgid "Allow the user to impersonate a staff user."
+msgstr ""
+
+msgid "Allow the user to change the user list columns."
 msgstr ""
 
 msgid "Add some users to help manage your shop"
@@ -1838,7 +1871,13 @@ msgstr ""
 msgid "You must have the Access to Admin Panel permissions to this shop."
 msgstr ""
 
-msgid "New Attribute"
+msgid "General Information"
+msgstr ""
+
+msgid "Choice Options"
+msgstr ""
+
+msgid "Add new option"
 msgstr ""
 
 msgid "Login"
@@ -1919,9 +1958,6 @@ msgid "Show Tour"
 msgstr ""
 
 msgid "Log out"
-msgstr ""
-
-msgid "General Information"
 msgstr ""
 
 msgid "Copy visibility settings to products"
@@ -2983,6 +3019,9 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+msgid "Total"
+msgstr ""
+
 msgid "Save and Exit"
 msgstr ""
 
@@ -3024,9 +3063,6 @@ msgid "Comment was saved."
 msgstr ""
 
 msgid "Updating the admin comment failed."
-msgstr ""
-
-msgid "Description"
 msgstr ""
 
 msgid "No payments have been created yet."
@@ -3569,7 +3605,7 @@ msgstr ""
 msgid "Here is an example of the data that would be submitted right now."
 msgstr ""
 
-msgid "User Information"
+msgid "Customer Information"
 msgstr ""
 
 #, python-format

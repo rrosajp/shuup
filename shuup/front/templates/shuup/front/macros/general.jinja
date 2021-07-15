@@ -3,12 +3,12 @@
 {% macro alert(message, title=None, mode="") %}
     <div class="alert{% if mode %} alert-{{ mode }}{% endif %}">
         {% if title %}
-            <strong>{{ "Error! "~title }}</strong>
+            <strong>{{ title }}</strong>
         {% endif %}
         {% if not caller %}
-            {{ "Error! "~message|safe }}
+            {{ message|safe }}
         {% else %}
-            {{ "Error! "~caller() }}
+            {{ caller() }}
         {% endif %}
     </div>
 {% endmacro %}
@@ -340,11 +340,11 @@
 {% macro render_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-dismissible alert-{{ message.tags }}" role="alert">
+            <div class="alert alert-dismissible alert-{{ 'danger' if message.tags == 'error' else message.tags }}" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                {{ message.tags.capitalize() ~ "! " ~ message }}
+                {{ message }}
             </div>
         {% endfor %}
     {% endif %}

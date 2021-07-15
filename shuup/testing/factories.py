@@ -34,6 +34,7 @@ from shuup.core.defaults.order_statuses import create_default_order_statuses
 from shuup.core.models import (
     AnonymousContact,
     Attribute,
+    AttributeChoiceOption,
     AttributeType,
     AttributeVisibility,
     Basket,
@@ -66,6 +67,7 @@ from shuup.core.models import (
     ShopProductVisibility,
     ShopStatus,
     Supplier,
+    SupplierModule,
     SupplierType,
     Tax,
     TaxClass,
@@ -253,6 +255,7 @@ ATTR_SPECS = [
     dict(type=AttributeType.TRANSLATED_STRING, identifier="genre", name="Genre"),
     dict(type=AttributeType.DATE, identifier="release_date", name="Release Date"),
     dict(type=AttributeType.DATETIME, identifier="important_datetime", name="Time and Date of Eschaton"),
+    dict(type=AttributeType.CHOICES, identifier="list_choices", name="Options to select"),
 ]
 
 
@@ -435,6 +438,8 @@ def get_default_supplier(shop=None):
     supplier = default_by_identifier(Supplier)
     if not supplier:
         supplier = Supplier.objects.create(name=DEFAULT_NAME, identifier=DEFAULT_IDENTIFIER, type=SupplierType.INTERNAL)
+        supplier_module = SupplierModule.objects.get_or_create(module_identifier="simple_supplier")[0]
+        supplier.supplier_modules.add(supplier_module)
         assert str(supplier) == DEFAULT_NAME
     if not shop:
         shop = get_default_shop()
@@ -443,9 +448,10 @@ def get_default_supplier(shop=None):
 
 
 def get_supplier(module_identifier, shop=None, **kwargs):
-    supplier = Supplier.objects.create(
-        name=DEFAULT_NAME, module_identifier=module_identifier, type=SupplierType.INTERNAL, **kwargs
-    )
+    name = kwargs.pop("name", DEFAULT_NAME)
+    supplier = Supplier.objects.create(name=name, type=SupplierType.INTERNAL, **kwargs)
+    supplier_module, created = SupplierModule.objects.get_or_create(module_identifier=module_identifier)
+    supplier.supplier_modules.add(supplier_module)
     if shop:
         supplier.shops.add(shop)
     return supplier
@@ -551,6 +557,19 @@ def get_initial_order_status():
 def get_completed_order_status():
     create_default_order_statuses()
     return OrderStatus.objects.get_default_complete()
+
+
+def create_attribute_with_options(name, options, min_options=0, max_options=0):
+    attribute = Attribute.objects.create(
+        identifier=name,
+        name=name,
+        type=AttributeType.CHOICES,
+        min_choices=min_options,
+        max_choices=max_options,
+    )
+    for option in options:
+        AttributeChoiceOption.objects.create(attribute=attribute, name=option)
+    return attribute
 
 
 def create_product(sku, shop=None, supplier=None, default_price=None, **attrs):
@@ -893,7 +912,7 @@ def create_random_product_attribute():
 def create_random_user(locale="en", **kwargs):
     user_model = get_user_model()
     faker = get_faker(["person"], locale)
-    params = {user_model.USERNAME_FIELD: slugify(faker.first_name())}
+    params = {user_model.USERNAME_FIELD: "{}-{}".format(uuid.uuid4().hex, slugify(faker.first_name()))}
     params.update(kwargs or {})
     return user_model.objects.create(**params)
 

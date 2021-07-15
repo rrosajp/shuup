@@ -13,6 +13,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.db.models import Q
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.text import format_lazy
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 from enumfields import Enum, EnumIntegerField
@@ -22,6 +23,7 @@ from parler.models import TranslatableModel, TranslatedFields
 from shuup.core.excs import ImpossibleProductModeException
 from shuup.core.fields import InternalIdentifierField, MeasurementField
 from shuup.core.signals import post_clean, pre_clean
+from shuup.core.specs.product_kind import DefaultProductKindSpec, get_product_kind_choices
 from shuup.core.taxing import TaxableItem
 from shuup.core.utils.slugs import generate_multilanguage_slugs
 from shuup.utils.analog import LogEntryKind, define_log_model
@@ -38,7 +40,7 @@ from ._product_variation import (
 )
 
 
-# TODO (2.0): This should be extandable
+# TODO (3.0): This should be extandable
 class ProductMode(Enum):
     NORMAL = 0
     PACKAGE_PARENT = 1
@@ -142,19 +144,6 @@ class ProductType(TranslatableModel):
 
 
 class ProductQuerySet(TranslatableQuerySet):
-    def _select_related(self):
-        return self.select_related("primary_image", "sales_unit", "tax_class", "manufacturer").prefetch_related(
-            "translations",
-            "shop_products",
-            "shop_products__display_unit",
-            "shop_products__display_unit__internal_unit",
-            "shop_products__display_unit__translations",
-            "shop_products__categories",
-            "shop_products__categories__translations",
-            "shop_products__primary_category",
-            "primary_image__file",
-        )
-
     def _visible(self, shop, customer, language=None, invisible_modes=[ProductMode.VARIATION_CHILD]):
         root = self.language(language) if language else self
         qs = root.all().filter(shop_products__shop=shop)
@@ -187,20 +176,20 @@ class ProductQuerySet(TranslatableQuerySet):
             else:
                 qs = qs.filter(shop_products__visibility_limit=ProductVisibility.VISIBLE_TO_ALL)
 
-        qs = qs.select_related(*Product.COMMON_SELECT_RELATED).distinct()
-        return qs.exclude(deleted=True).exclude(type__isnull=True)
+        qs = qs.select_related(*Product.COMMON_SELECT_RELATED).prefetch_related(*Product.COMMON_PREFETCH_RELATED)
+        return qs.exclude(deleted=True).exclude(type__isnull=True).distinct()
 
     def _get_qs(self, shop, customer, language, visibility_type):
         qs = self._visible(shop=shop, customer=customer, language=language)
         if customer and customer.is_all_seeing:
-            return qs._select_related()
+            return qs
         else:
             from ._product_shops import ShopProductVisibility
 
             return qs.filter(
                 shop_products__shop=shop,
                 shop_products__visibility__in=(visibility_type, ShopProductVisibility.ALWAYS_VISIBLE),
-            )._select_related()
+            )
 
     def listed(self, shop, customer=None, language=None):
         from ._product_shops import ShopProductVisibility
@@ -219,13 +208,14 @@ class ProductQuerySet(TranslatableQuerySet):
         qs = (self.language(language) if language else self).exclude(deleted=True).exclude(type__isnull=True)
         if shop:
             qs = qs.filter(shop_products__shop=shop)
-        qs = qs.select_related(*Product.COMMON_SELECT_RELATED)
+        qs = qs.select_related(*Product.COMMON_SELECT_RELATED).prefetch_related(*Product.COMMON_PREFETCH_RELATED)
         return qs
 
 
 @python_2_unicode_compatible
 class Product(TaxableItem, AttributableMixin, TranslatableModel):
-    COMMON_SELECT_RELATED = ("type", "primary_image", "tax_class")
+    COMMON_SELECT_RELATED = ("sales_unit", "type", "primary_image", "tax_class", "manufacturer")
+    COMMON_PREFETCH_RELATED = ("translations",)
 
     # Metadata
     created_on = models.DateTimeField(auto_now_add=True, editable=False, db_index=True, verbose_name=_("created on"))
@@ -233,6 +223,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     deleted = models.BooleanField(default=False, editable=False, db_index=True, verbose_name=_("deleted"))
 
     # Behavior
+    kind = models.IntegerField(default=DefaultProductKindSpec.value, choices=get_product_kind_choices(), db_index=True)
     mode = EnumIntegerField(ProductMode, default=ProductMode.NORMAL, verbose_name=_("mode"))
     variation_parent = models.ForeignKey(
         "self",
@@ -323,7 +314,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     # Physical dimensions
     width = MeasurementField(
         unit=settings.SHUUP_LENGTH_UNIT,
-        verbose_name=_("width ({})".format(settings.SHUUP_LENGTH_UNIT)),
+        verbose_name=format_lazy(_("width ({})"), settings.SHUUP_LENGTH_UNIT),
         help_text=_(
             "Set the measured width of your product or product packaging. "
             "This will provide customers with the product size and help with calculating shipping costs."
@@ -331,7 +322,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     )
     height = MeasurementField(
         unit=settings.SHUUP_LENGTH_UNIT,
-        verbose_name=_("height ({})".format(settings.SHUUP_LENGTH_UNIT)),
+        verbose_name=format_lazy(_("height ({})"), settings.SHUUP_LENGTH_UNIT),
         help_text=_(
             "Set the measured height of your product or product packaging. "
             "This will provide customers with the product size and help with calculating shipping costs."
@@ -339,7 +330,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     )
     depth = MeasurementField(
         unit=settings.SHUUP_LENGTH_UNIT,
-        verbose_name=_("depth ({})".format(settings.SHUUP_LENGTH_UNIT)),
+        verbose_name=format_lazy(_("depth ({})"), settings.SHUUP_LENGTH_UNIT),
         help_text=_(
             "Set the measured depth or length of your product or product packaging. "
             "This will provide customers with the product size and help with calculating shipping costs."
@@ -347,7 +338,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     )
     net_weight = MeasurementField(
         unit=settings.SHUUP_MASS_UNIT,
-        verbose_name=_("net weight ({})".format(settings.SHUUP_MASS_UNIT)),
+        verbose_name=format_lazy(_("net weight ({})"), settings.SHUUP_MASS_UNIT),
         help_text=_(
             "Set the measured weight of your product WITHOUT its packaging. "
             "This will provide customers with the actual product's weight."
@@ -355,7 +346,7 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
     )
     gross_weight = MeasurementField(
         unit=settings.SHUUP_MASS_UNIT,
-        verbose_name=_("gross weight ({})".format(settings.SHUUP_MASS_UNIT)),
+        verbose_name=format_lazy(_("gross weight ({})"), settings.SHUUP_MASS_UNIT),
         help_text=_(
             "Set the measured gross weight of your product WITH its packaging. "
             "This will help with calculating shipping costs."
@@ -743,7 +734,9 @@ class Product(TaxableItem, AttributableMixin, TranslatableModel):
             if not combination_hash:  # No precalculated hash, need to figure that out
                 combination_hash = get_combination_hash_from_variable_mapping(parent, variables=variables)
 
-            pvr = ProductVariationResult.objects.create(product=parent, combination_hash=combination_hash, result=self)
+            pvr = ProductVariationResult.objects.update_or_create(
+                product=parent, combination_hash=combination_hash, defaults=dict(result=self)
+            )[0]
             if parent.mode == ProductMode.SIMPLE_VARIATION_PARENT:
                 parent.verify_mode()
                 parent.save()

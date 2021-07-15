@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 13:32+0000\n"
+"POT-Creation-Date: 2021-07-06 22:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: en <LL@li.org>\n"
@@ -66,6 +66,12 @@ msgstr ""
 msgid "Select the location of the page to inject the snippet."
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
+msgid "Filter by name..."
+msgstr ""
+
 msgid "Location"
 msgstr ""
 
@@ -94,6 +100,9 @@ msgid "Stylesheets"
 msgstr ""
 
 msgid "The fonts, colors, and styles to use with your theme."
+msgstr ""
+
+msgid "Failed to render the plugin"
 msgstr ""
 
 msgid "Content in this box is shown to all user types without limitations."
@@ -174,6 +183,12 @@ msgstr ""
 msgid "Theme configuration for %s"
 msgstr ""
 
+msgid "snippet name"
+msgstr ""
+
+msgid "Untitled"
+msgstr ""
+
 msgid "location"
 msgstr ""
 
@@ -187,9 +202,6 @@ msgid "themes"
 msgstr ""
 
 msgid "Snippet"
-msgstr ""
-
-msgid "Snippet for {} in {}"
 msgstr ""
 
 msgid "Plugin"
@@ -297,6 +309,9 @@ msgid "Product Selection (asynchronous)"
 msgstr ""
 
 msgid "In-Place Snippet"
+msgstr ""
+
+msgid "Resource snippet for start of head"
 msgstr ""
 
 msgid "Resource snippet for end of head"

@@ -2,13 +2,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christian Hess, 2021
 # Melanie Missbach <melanie@buyhappy.de>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 14:00+0000\n"
-"PO-Revision-Date: 2021-04-16 19:23+0000\n"
+"POT-Creation-Date: 2021-06-02 18:31+0000\n"
+"PO-Revision-Date: 2021-06-04 08:29+0000\n"
 "Last-Translator: Melanie Missbach <melanie@buyhappy.de>\n"
 "Language-Team: German (http://www.transifex.com/shuup/shuup/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -122,7 +123,7 @@ msgid "The name suffix. For example, Jr, Sr, etc."
 msgstr "Das Namenssuffix. Zum Beispiel: Junior., Senior, usw."
 
 msgid "name extension"
-msgstr "Namenszusatz"
+msgstr "Anrede"
 
 msgid ""
 "Any other text to display along with the address. This could be department "
@@ -140,7 +141,7 @@ msgstr "Steuernummer"
 
 msgid ""
 "The business tax number. For example, EIN in the USA or VAT code in the EU."
-msgstr "Die Steuernummer eines Unternehmens. Zum Beispiel der EIN in den USA oder die Umsatzsteueridentnummer in der EU."
+msgstr "Die Steuernummer eines Unternehmens. Zum Beispiel die Umsatzsteueridentnummer in der EU oder der EIN in den USA."
 
 msgid "phone"
 msgstr "Telefon"
@@ -155,7 +156,7 @@ msgid "The primary email for the address."
 msgstr "Die primäre E-Mail-Adresse der Adresse."
 
 msgid "street"
-msgstr "Straße"
+msgstr "1. Adresszeile"
 
 msgid "The street address."
 msgstr "Die Adresse der Straße"
@@ -259,6 +260,9 @@ msgstr "übersetztes Textelement"
 msgid "untranslated string"
 msgstr "nicht übersetztes Textelement"
 
+msgid "choices"
+msgstr "Auswahlmöglichkeiten"
+
 msgid "searchable"
 msgstr "suchbar"
 
@@ -275,6 +279,22 @@ msgid ""
 "page."
 msgstr "Der Datentyp des Merkmals. Merkmalswerte können auf der Artikeleditor-Seite definiert werden."
 
+msgid "Minimum amount of choices"
+msgstr "Mindestanzahl an Auswahlmöglichkeiten"
+
+msgid ""
+"Minimum amount of choices that user can choose from existing options. This "
+"field has affect only for choices type."
+msgstr "Mindestanzahl an Auswahlmöglichkeiten, die der Benutzer aus vorhandenen Optionen auswählen kann. Dieses Feld wirkt sich nur auf den Auswahltyp aus."
+
+msgid "Maximum amount of choices"
+msgstr "Maximale Anzahl an Auswahlmöglichkeiten"
+
+msgid ""
+"Maximum amount of choices that user can choose from existing options. This "
+"field has affect only for choices type."
+msgstr "Maximale Anzahl von Auswahlmöglichkeiten, die der Benutzer aus vorhandenen Optionen auswählen kann. Dieses Feld wirkt sich nur auf den Auswahltyp aus."
+
 msgid "visibility mode"
 msgstr "Sichtbarkeitsmodus"
 
@@ -282,6 +302,9 @@ msgid ""
 "Select the attribute visibility setting. Attributes can be shown on the "
 "product detail page or can be used to enhance product search results."
 msgstr "Wähle die Einstellung, um Artikelmerkmale sichtbar zu machen. Die Merkmale können auf der Produktdetailseite angezeigt werden oder zur Verbesserung von Artikelsuchergebnissen dienen."
+
+msgid "The ordering in which your attribute will be displayed."
+msgstr "Die Reihenfolge, in der das Attribut angezeigt wird."
 
 msgid ""
 "The attribute name. Product attributes can be used to list the various "
@@ -296,6 +319,12 @@ msgstr "Merkmal"
 msgid "attributes"
 msgstr "Merkmale"
 
+msgid "The attribute choice option name. "
+msgstr "Der Name der Auswahloption des Attributs."
+
+msgid "chosen options"
+msgstr "ausgewählte Kombination"
+
 msgid "numeric value"
 msgstr "numerischer Wert"
 
@@ -305,14 +334,71 @@ msgstr "Datum-Zeit-Wert"
 msgid "untranslated value"
 msgstr "nicht übersetzter Wert"
 
+msgid "queue name"
+msgstr "Name der Warteschleife"
+
+msgid "task identifier"
+msgstr "Aufgaben-Kennung"
+
+msgid "created on"
+msgstr "erstellt am"
+
+msgid "modified on"
+msgstr "geändert am"
+
+msgid "task function"
+msgstr "Aufgabenfunktion"
+
+msgid "task arguments"
+msgstr "Aufgabenargumente"
+
+msgid "shop"
+msgstr "Marktplatz"
+
+msgid "supplier"
+msgstr "Händler"
+
+msgid "user"
+msgstr "Benutzer"
+
+msgid "background task"
+msgstr "Anwendung im Hintergrund"
+
+msgid "background tasks"
+msgstr "Anwendungen im Hintergrund"
+
+msgid "running"
+msgstr "läuft"
+
+msgid "success"
+msgstr "Das war erfolgreich!"
+
+msgid "error"
+msgstr "Fehler"
+
+msgid "started on"
+msgstr "gestartet am"
+
+msgid "finished on"
+msgstr "vollendet am"
+
+msgid "results"
+msgstr "Ergebnisse"
+
+msgid "error log"
+msgstr "Fehlerprotokoll"
+
+msgid "background task execution"
+msgstr "Ausführung einer Aufgabe im Hintergrund"
+
+msgid "background task executions"
+msgstr "Ausführung von Aufgaben im Hintergrund"
+
 msgid "The following fields are protected and can not be changed."
 msgstr "Die folgenden Felder sind geschützt und können nicht geändert werden."
 
 msgid "key"
 msgstr "Schlüssel"
-
-msgid "shop"
-msgstr "Marktplatz"
 
 msgid "customer"
 msgstr "Kunde"
@@ -322,9 +408,6 @@ msgstr "Besteller"
 
 msgid "creator"
 msgstr "Ersteller"
-
-msgid "created on"
-msgstr "erstellt am"
 
 msgid "updated on"
 msgstr "aktualisiert am"
@@ -526,9 +609,6 @@ msgstr "Es kann kein Händlerbereich für die Standardkontaktgruppe definiert we
 msgid "Can't delete. This object is protected."
 msgstr "Kann nicht gelöscht werden. Dieses Objekt ist geschützt."
 
-msgid "modified on"
-msgstr "geändert am"
-
 msgid "active"
 msgstr "aktiv"
 
@@ -656,9 +736,6 @@ msgstr "andere"
 
 msgid "Person Contacts"
 msgstr "Privatepersonen-Kontakte"
-
-msgid "user"
-msgstr "Benutzer"
 
 msgid "gender"
 msgstr "Geschlecht"
@@ -795,9 +872,6 @@ msgstr "Rückerstattung"
 
 msgid "rounding"
 msgstr "Runden"
-
-msgid "supplier"
-msgstr "Händler"
 
 msgid "parent line"
 msgstr "übergeordnete Zeile"
@@ -1191,7 +1265,7 @@ msgid ""
 msgstr "Die Anzahl der Einheiten, die gekauft werden können, nachdem der Artikel bereits ausverkauft ist (Out of Stock). Setze den Wert auf \"leer\", damit der Artikel unbegrenzt bestellbar ist."
 
 msgid "purchase multiple"
-msgstr "mehrere kaufen"
+msgstr "Mehrfachkauf"
 
 msgid ""
 "Set this to other than 0 if the product needs to be purchased in multiples. "
@@ -1449,10 +1523,10 @@ msgid "bought with"
 msgstr "wird gekauft mit"
 
 msgid "not shipped (non-deliverable)"
-msgstr "nicht versendet (unzustellbar)"
+msgstr "nicht lieferbar"
 
 msgid "shipped (deliverable)"
-msgstr "zu versenden (lieferbar)"
+msgstr "lieferbar"
 
 msgid "no verification required"
 msgstr "keine Prüfung erforderlich"
@@ -1498,7 +1572,7 @@ msgid ""
 "Select a sales unit for your product. This is shown in your store front and "
 "is used to determine whether the product can be purchased using fractional "
 "amounts. To change settings search for `Sales Units`."
-msgstr "Wähle eine Verkaufseinheit für Deinen Artikel. Diese wird in Deinem Händlerbereich angezeigt und wird verwendet, um zu bestimmen, ob der Artikel in Teilmengen erworben werden kann. Um die Einstellungen zu ändern, gehe zu \"Verkaufseinheiten\"."
+msgstr "Wähle eine Verkaufseinheit für Deinen Artikel. Diese wird in Deinem Händlerbereich angezeigt und wird verwendet, um zu bestimmen, ob der Artikel in Teilmengen erworben werden kann. Um die Einstellungen zu ändern, gehe zu Verkaufseinheiten."
 
 msgid "tax class"
 msgstr "Steuerklasse"
@@ -1508,7 +1582,7 @@ msgid ""
 "which taxes to apply to your product. Define tax classes by searching for "
 "`Tax Classes`. To define the rules by which taxes are applied search for "
 "`Tax Rules`."
-msgstr "Wähle eine Steuerklasse für Deinen Artikel. Die Steuerklasse wird verwendet, um zu bestimmen, welche Steuern auf  Deinen Artikel angewendet werden sollen. Um die Steuerklassen zu definieren, gehe zu \"Steuerklassen\". Um die Regeln zu definieren, gemäß denen die Steuern angewendet werden sollen, gehe zu \"Steuerregeln\"."
+msgstr "Wähle eine Steuerklasse für Deinen Artikel. Die Steuerklasse wird verwendet, um zu bestimmen, welche Steuern auf  Deinen Artikel angewendet werden sollen. Um die Steuerklassen zu definieren, gehe zu Steuerklassen. Um die Regeln zu definieren, gemäß denen die Steuern angewendet werden sollen, gehe zu Steuerregeln."
 
 msgid ""
 "Select a product type for your product. These allow you to configure custom "
@@ -1579,7 +1653,7 @@ msgid ""
 msgstr "Trage hier die gemessene Tiefe Deines Produkts oder Deiner Produktverpackung ein. Dies wird verwendet, um den Kunden die Produktgröße mitzuteilen und hilft bei der Berechnung der Versandkosten."
 
 msgid "net weight ({})"
-msgstr "Eigengewicht ({})"
+msgstr "Nettogewicht ({})"
 
 msgid ""
 "Set the measured weight of your product WITHOUT its packaging. This will "
@@ -1629,7 +1703,7 @@ msgid ""
 "example different colors, sizes or versions. To manage variations, at the "
 "top of the the individual product page, click `Actions` -> `Manage "
 "Variations`."
-msgstr "Du kannst hier den Namen der Produktvariante eingeben. Das können zum Beispiel verschiedene Farben, Größen oder Versionen sein. Um Produktvarianten zu verwalten, klicke oben auf der individuellen Produktdetailseite auf \"Aktionen\" -> \"Produktvarianten verwalten\"."
+msgstr "Gib hier den Namen der Produktvariante ein. Das können zum Beispiel verschiedene Farben oder Größen sein. Um Produktvarianten zu verwalten, klicke oben auf der Produktdetailseite auf \"Aktionen\" -> \"Produktvarianten verwalten\"."
 
 msgid ""
 "Multilevel parentage hierarchies aren't supported (parent is a child "
@@ -1843,16 +1917,16 @@ msgid "Service is not available for any of the customer's groups."
 msgstr "Der Dienst ist für keine Gruppe des Kunden verfügbar."
 
 msgid "Access to Admin Panel only availability"
-msgstr "Nur verfügbar mit Zugriff auf das Admin-Panel"
+msgstr "Nur verfügbar mit Zugriff auf den Administrationsbereich (Admin-Panel)"
 
 msgid ""
 "Make service available only for people with `Access to Admin Panel` rights."
-msgstr "Stelle den Dienst nur Personen mit den Rechten \"Zugang zum Admin-Panel\" zur Verfügung."
+msgstr "Stelle den Dienst nur Personen mit den Rechten \"Zugang zum Administrationsbereich (Admin-Panel)\" zur Verfügung."
 
 msgid ""
 "Service is only available for people with `Access to Admin Panel` "
 "(`is_staff`) rights."
-msgstr "Dieser Dienst ist nur für Benutzer mit \"Zugriff auf das Admin Panel\" (Marktplatzbetreiber)-Rechten verfügbar."
+msgstr "Dieser Dienst ist nur für Benutzer mit \"Zugriff auf den Administrationsbereich (Admin-Panel)\" (Marktplatzbetreiber)-Rechten verfügbar."
 
 msgid "Order total price limit"
 msgstr "Preislimit der Auftragssumme"
@@ -1966,7 +2040,7 @@ msgid "Not sent"
 msgstr "Nicht versendet"
 
 msgid "Sent"
-msgstr "Versendet"
+msgstr "Gesendet"
 
 msgid "Error"
 msgstr "Fehler"
@@ -2069,7 +2143,7 @@ msgid "staff members"
 msgstr "Mitarbeiter"
 
 msgid "The shop name. This name is displayed throughout Admin Panel."
-msgstr "Der Name des Marktplatzes. Dieser Name wird im gesamten Admin Panel angezeigt."
+msgstr "Der Name des Marktplatzes. Dieser Name wird im gesamten Administrationsbereich (Admin-Panel) angezeigt."
 
 msgid ""
 "The public shop name. This name is displayed in the store front and in any "
@@ -2137,6 +2211,9 @@ msgid ""
 "overwritten on a product-by-product basis."
 msgstr "Aktiviere diese Option, wenn dieser Händler den Bestand der bestandsgeführten Artikel verwalten darf. Ein aktive Bestandsverwaltung ist unnötig, wenn Du z. B. digitale Produkte verkaufst, die nie ausgehen werden, egal wie viele davon bereits verkauft wurden. Es gibt auch einige andere Fälle, in denen die Bestandsverwaltung eine unnötige Komplikation darstellen könnte. Diese Einstellung weist lediglich ein sinnvolles Standardverhalten zu, das produktspezifisch überschrieben werden kann."
 
+msgid "supplier modules"
+msgstr "Händler-Module"
+
 msgid ""
 "Select the supplier module to use for this supplier. Supplier modules define"
 " the rules by which inventory is managed."
@@ -2167,6 +2244,20 @@ msgstr "Freigegeben"
 
 msgid "Indicates whether this supplier is currently approved for work."
 msgstr "Zeigt an, ob dieser Händler freigegeben ist und vollständig am Marktplatzgeschehen teilnehmen kann."
+
+msgid "module identifier"
+msgstr "Modulkennung"
+
+msgid ""
+"Select the types of products this supplier can handle.Example for normal "
+"products select just Simple Supplier."
+msgstr "Wähle die Artikeltypen aus, die dieser Händler verarbeiten kann. Für normale Produkte wähle bspw. \"Einfacher Lieferant\"."
+
+msgid "Module name"
+msgstr "Modulname"
+
+msgid "Supplier modules name."
+msgstr "Name der Händlermodule."
 
 msgid "Can't change the business critical fields of the Tax that is in use."
 msgstr "Die geschäftskritischen Felder der verwendeten Steuer können nicht geändert werden."
@@ -2340,9 +2431,6 @@ msgctxt "Display the value with the unit symbol (with or without space) "
 msgid "{value}{symbol}"
 msgstr "{value}{symbol}"
 
-msgid "No Choice"
-msgstr "Keine Auswahl"
-
 msgid "inherit"
 msgstr "übernehmen"
 
@@ -2362,18 +2450,12 @@ msgstr "%s ist auf diesem Marktplatz leider nicht verfügbar."
 msgid "Default Pricing"
 msgstr "Standardpreise"
 
-msgid "Error! Insufficient quantity in stock."
-msgstr "Fehler! Unzureichende Menge auf Lager."
+#, python-brace-format
+msgid "The product kind {value} is not unique!"
+msgstr "Die Produktart {value} ist nicht eindeutig!"
 
-#, python-format
-msgid "%(name)s (physical stock: %(quantity)s)"
-msgstr "%(name)s (physischer Bestand: %(quantity)s)"
-
-#, python-format
-msgid ""
-"Insufficient physical stock count for the following products: "
-"`%(product_counts)s`."
-msgstr "Unzureichender physischer Lagerbestand für die folgenden Produkte: \"%(product_counts)s\"."
+msgid "Product"
+msgstr "Artikel"
 
 msgid "inventory"
 msgstr "Lagerbestand"
@@ -2383,6 +2465,12 @@ msgstr "Wiederbeschaffung des Bestands"
 
 msgid "restock logical"
 msgstr "Wiederbeschaffungslogik"
+
+msgid "Failed to execute the task"
+msgstr "Die Aufgabe konnte leider nicht ausgeführt werden"
+
+msgid "An unexpeted error occurred."
+msgstr "Ein unerwarteter Fehler ist aufgetreten."
 
 #, python-format
 msgid "Refund for %s"

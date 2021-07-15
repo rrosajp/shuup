@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christian Hess, 2021
 # Melanie Missbach <melanie@buyhappy.de>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 14:00+0000\n"
-"PO-Revision-Date: 2021-04-16 19:24+0000\n"
-"Last-Translator: Melanie Missbach <melanie@buyhappy.de>\n"
+"POT-Creation-Date: 2021-07-14 15:24+0000\n"
+"PO-Revision-Date: 2021-07-14 20:24+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/shuup/shuup/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -171,7 +172,7 @@ msgid "I accept the terms and conditions"
 msgstr "Ich akzeptiere die Bedingungen und Konditionen"
 
 msgid "I want to receive marketing material"
-msgstr "Ich möchte den Newsletter und anderes Marketingmaterial erhalten"
+msgstr "Ich freue mich über den Newsletter und andere Updates"
 
 msgid "Comment"
 msgstr "Bemerkung"
@@ -388,6 +389,18 @@ msgstr "Preisschritt"
 msgid ""
 "Set the price step for each range. Each range will increment by this value."
 msgstr "Stelle den Preisschritt für jeden Bereich ein. Jeder weitere Preisbereich wird um diesen Wert erhöht."
+
+msgid "Filter products by its attributes"
+msgstr "Artikel nach Tags filtern"
+
+msgid "Allow products to be filtered according to their attributes."
+msgstr "Ermögliche das Filtern von Artikeln nach ihren Merkmalen."
+
+msgid "Attributes that can be filtered"
+msgstr "Attribute, die gefiltert werden können"
+
+msgid "Select attributes that can used for filtering the products."
+msgstr "Wähle die Artikelmerkmale aus, die zum Filtern der Artikel verwendet werden können."
 
 #, python-format
 msgid "Under %(min_limit)s"
@@ -745,7 +758,7 @@ msgid "Taxless Discount"
 msgstr "Steuerfreier Rabatt"
 
 msgid "Taxless Discount Percentage"
-msgstr "Steuerfreier Rabatt in %"
+msgstr "Steuerfreier Rabatt Prozentsatz"
 
 msgid "Tax"
 msgstr "Steuern"
@@ -1089,10 +1102,10 @@ msgid "My saved carts"
 msgstr "Meine gespeicherten Warenkörbe"
 
 msgid "My wishlists"
-msgstr "Meine Wunschlisten"
+msgstr "Meine Einkaufslisten"
 
 msgid "Admin panel"
-msgstr "Admin-Panel"
+msgstr "Administrationsbereich"
 
 msgid "Log out"
 msgstr "Abmelden"
@@ -1162,7 +1175,7 @@ msgstr "Auch verfügbar bei"
 
 #, python-format
 msgid "Save %(discount_percent)s"
-msgstr "%(discount_percent)s speichern"
+msgstr "%(discount_percent)s sparen"
 
 msgid "Product Information"
 msgstr "Informationen zum Produkt"
@@ -1195,7 +1208,7 @@ msgid "Depth"
 msgstr "Tiefe"
 
 msgid "Net Weight"
-msgstr "Eigengewicht"
+msgstr "Nettogewicht"
 
 msgid "Gross Weight"
 msgstr "Gesamtgewicht"
@@ -1336,8 +1349,14 @@ msgstr "Bearbeiten"
 msgid "`{language_code}` is an invalid language code."
 msgstr "\"{language_code}\" ist ein ungültiger Sprachcode."
 
+msgid "The order is canceled so you can't pay for it."
+msgstr ""
+
 msgid "Error! This product is not available in this shop."
 msgstr "Fehler! Dieser Artikel ist auf diesem Marktplatz leider nicht verfügbar."
+
+msgid "Invalid timezone"
+msgstr ""
 
 #, python-format
 msgid "Maximum file size reached (%(size)s MB)."

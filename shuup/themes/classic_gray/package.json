@@ -19,7 +19,7 @@
     "autoprefixer": "^9.6.1",
     "babel-preset-env": "^1.7.0",
     "bootstrap": "^3.4.1",
-    "bootstrap-select": "1.6.3",
+    "bootstrap-select": "1.13.18",
     "dropzone": "^5.5.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
@@ -31,7 +31,7 @@
     "postcss-modules": "^1.1.0",
     "sass": "^1.15.1",
     "select2": "^4.0.12",
-    "shuup-static-build-tools": "^1.0.2",
+    "shuup-static-build-tools": "^1.0.5",
     "simplelightbox": "^1.13.0"
   },
   "devDependencies": {

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 14:00+0000\n"
-"PO-Revision-Date: 2021-03-29 14:28+0000\n"
+"POT-Creation-Date: 2021-07-14 15:24+0000\n"
+"PO-Revision-Date: 2021-07-14 20:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Japanese (Japan) (http://www.transifex.com/shuup/shuup/language/ja_JP/)\n"
 "MIME-Version: 1.0\n"
@@ -387,6 +387,18 @@ msgstr ""
 
 msgid ""
 "Set the price step for each range. Each range will increment by this value."
+msgstr ""
+
+msgid "Filter products by its attributes"
+msgstr ""
+
+msgid "Allow products to be filtered according to their attributes."
+msgstr ""
+
+msgid "Attributes that can be filtered"
+msgstr ""
+
+msgid "Select attributes that can used for filtering the products."
 msgstr ""
 
 #, python-format
@@ -1336,7 +1348,13 @@ msgstr ""
 msgid "`{language_code}` is an invalid language code."
 msgstr ""
 
+msgid "The order is canceled so you can't pay for it."
+msgstr ""
+
 msgid "Error! This product is not available in this shop."
+msgstr ""
+
+msgid "Invalid timezone"
 msgstr ""
 
 #, python-format

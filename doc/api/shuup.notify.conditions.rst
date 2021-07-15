@@ -1,11 +1,11 @@
-shuup.notify.conditions package
-===============================
+shuup\.notify\.conditions package
+=================================
 
 Submodules
 ----------
 
-shuup.notify.conditions.simple module
--------------------------------------
+shuup\.notify\.conditions\.simple module
+----------------------------------------
 
 .. automodule:: shuup.notify.conditions.simple
     :members:

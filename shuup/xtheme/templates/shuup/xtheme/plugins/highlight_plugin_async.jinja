@@ -8,7 +8,7 @@
 {% else %}
     <section
         class="carousel-section product-highlight-plugin async-xtheme-product-carousel-plugin"
-        data-url='{{ data_url }}'
+        data-url='{{ data_url }}{% if orderable_only %}?orderable_only=1{% endif %}'
     >
         {% if title %}
             <div class="title-bar light"><h2>{{ title }}</h2></div>

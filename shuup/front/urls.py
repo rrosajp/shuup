@@ -10,6 +10,7 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
+from django.utils.html import escape
 from django.views.decorators.csrf import csrf_exempt
 from django.views.i18n import set_language
 from itertools import chain
@@ -31,13 +32,14 @@ from .views.misc import (
 from .views.order import OrderCompleteView
 from .views.payment import ProcessPaymentView
 from .views.product import ProductDetailView
+from .views.timezone import SetTimezoneView
 from .views.upload import media_upload
 
 # TODO: Check _not_here_yet URLs in this file
 
 
 def _not_here_yet(request, *args, **kwargs):
-    return HttpResponse("Not here yet: %s (%r, %r)" % (request.path, args, kwargs), status=410)
+    return HttpResponse("Not here yet: %s (%r, %r)" % (request.path, escape(args), escape(kwargs)), status=410)
 
 
 # Use a different js catalog function in front urlpatterns to prevent forcing
@@ -97,6 +99,7 @@ urlpatterns = [
     ),
     url(r"^c/$", csrf_exempt(AllCategoriesView.as_view()), name="all-categories"),
     url(r"^c/(?P<pk>\d+)-(?P<slug>.*)/$", csrf_exempt(CategoryView.as_view()), name="category"),
+    url(r"^tz/", SetTimezoneView.as_view(), name="set_timezone"),
 ]
 
 # TODO: Document `front_urls_pre`, `front_urls` and `front_urls_post`.

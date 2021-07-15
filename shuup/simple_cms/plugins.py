@@ -6,7 +6,7 @@
 # This source code is licensed under the OSL-3.0 license found in the
 # LICENSE file in the root directory of this source tree.
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language, ugettext_lazy as _
 
 from shuup.simple_cms.models import Page
 from shuup.simple_cms.utils import order_query_by_values
@@ -77,6 +77,7 @@ class PageLinksPlugin(TemplatedPlugin):
     identifier = "simple_cms.page_links"
     name = _("CMS Page Links")
     template_name = "shuup/simple_cms/plugins/page_links.jinja"
+    cacheable = True
     editor_form_class = PageLinksConfigForm
     fields = [
         ("title", TranslatableField(label=_("Title"), required=False, initial="")),
@@ -99,6 +100,13 @@ class PageLinksPlugin(TemplatedPlugin):
         ),
         "pages",
     ]
+
+    def get_cache_key(self, context, **kwargs) -> str:
+        title = self.get_translated_value("title")
+        selected_pages = self.config.get("pages", [])
+        show_all_pages = self.config.get("show_all_pages", True)
+        hide_expired = self.config.get("hide_expired", False)
+        return str((get_language(), title, selected_pages, show_all_pages, hide_expired))
 
     def get_context_data(self, context):
         """

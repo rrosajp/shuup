@@ -7,7 +7,8 @@
 from shuup.utils import update_module_attributes
 
 from ._addresses import ImmutableAddress, MutableAddress, SavedAddress, SavedAddressRole, SavedAddressStatus
-from ._attributes import Attribute, AttributeType, AttributeVisibility
+from ._attributes import Attribute, AttributeChoiceOption, AttributeType, AttributeVisibility
+from ._background_tasks import BackgroundTask, BackgroundTaskExecution, BackgroundTaskExecutionStatus
 from ._base import PolymorphicShuupModel, PolymorphicTranslatableShuupModel, ShuupModel, TranslatableShuupModel
 from ._basket import Basket
 from ._categories import Category, CategoryStatus, CategoryVisibility
@@ -87,7 +88,7 @@ from ._service_shipping import Carrier, CustomCarrier, ShippingMethod
 from ._shipments import Shipment, ShipmentProduct, ShipmentStatus, ShipmentType
 from ._shops import Shop, ShopStatus
 from ._supplied_products import SuppliedProduct
-from ._suppliers import Supplier, SupplierShop, SupplierType
+from ._suppliers import Supplier, SupplierModule, SupplierShop, SupplierType
 from ._taxes import CustomerTaxGroup, Tax, TaxClass
 from ._units import DisplayUnit, PiecesSalesUnit, SalesUnit, UnitInterface
 
@@ -96,8 +97,12 @@ __all__ = [
     "AbstractPayment",
     "AnonymousContact",
     "Attribute",
+    "AttributeChoiceOption",
     "AttributeType",
     "AttributeVisibility",
+    "BackgroundTask",
+    "BackgroundTaskExecution",
+    "BackgroundTaskExecutionStatus",
     "Basket",
     "Carrier",
     "Category",
@@ -158,7 +163,6 @@ __all__ = [
     "PolymorphicShuupModel",
     "PolymorphicTranslatableShuupModel",
     "Product",
-    "Product",
     "ProductAttribute",
     "ProductCrossSell",
     "ProductCrossSellType",
@@ -200,6 +204,7 @@ __all__ = [
     "Supplier",
     "SupplierShop",
     "SupplierType",
+    "SupplierModule",
     "Tax",
     "TaxClass",
     "TranslatableShuupModel",

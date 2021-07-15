@@ -106,18 +106,38 @@ SOUTH_TESTS_MIGRATE = False  # Makes tests that much faster.
 DEFAULT_FROM_EMAIL = "no-reply@example.com"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-LOGGING = {
-    "version": 1,
-    "formatters": {
-        "verbose": {"format": "[%(asctime)s] (%(name)s:%(levelname)s): %(message)s"},
-    },
-    "handlers": {
-        "console": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "verbose"},
-    },
-    "loggers": {
-        "shuup": {"handlers": ["console"], "level": "DEBUG", "propagate": True},
-    },
-}
+if os.environ.get("SHUUP_TESTS_CI", False):
+    LOGGING = {
+        "version": 1,
+        "formatters": {
+            "verbose": {"format": "[%(asctime)s] (%(name)s:%(levelname)s): %(message)s"},
+        },
+        "handlers": {
+            "file": {
+                "level": "ERROR",
+                "class": "logging.FileHandler",
+                "formatter": "verbose",
+                "filename": ".unit_tests/tests.log",
+            },
+        },
+        "loggers": {
+            "django": {"handlers": ["file"], "level": "ERROR", "propagate": False},
+            "shuup": {"handlers": ["file"], "level": "ERROR", "propagate": False},
+        },
+    }
+else:
+    LOGGING = {
+        "version": 1,
+        "formatters": {
+            "verbose": {"format": "[%(asctime)s] (%(name)s:%(levelname)s): %(message)s"},
+        },
+        "handlers": {
+            "console": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "verbose"},
+        },
+        "loggers": {
+            "shuup": {"handlers": ["console"], "level": "DEBUG", "propagate": True},
+        },
+    }
 
 LANGUAGES = [
     ("en", "English"),
@@ -192,12 +212,6 @@ SHUUP_ERROR_PAGE_HANDLERS_SPEC = [
 ]
 
 SHUUP_SIMPLE_SEARCH_LIMIT = 150
-
-
-if os.environ.get("SHUUP_WORKBENCH_DISABLE_MIGRATIONS") == "1":
-    from .settings.utils import get_disabled_migrations
-
-    MIGRATION_MODULES = get_disabled_migrations()
 
 
 def configure(setup):

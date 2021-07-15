@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 13:32+0000\n"
-"PO-Revision-Date: 2021-02-04 14:15+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2021-07-06 22:55+0000\n"
+"PO-Revision-Date: 2021-07-07 18:01+0000\n"
+"Last-Translator: Christian Hess\n"
 "Language-Team: Russian (http://www.transifex.com/shuup/shuup/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,6 +67,12 @@ msgstr ""
 msgid "Select the location of the page to inject the snippet."
 msgstr ""
 
+msgid "Name"
+msgstr ""
+
+msgid "Filter by name..."
+msgstr ""
+
 msgid "Location"
 msgstr ""
 
@@ -96,6 +102,9 @@ msgstr "Выбор стиля"
 
 msgid "The fonts, colors, and styles to use with your theme."
 msgstr "Шрифты, цвета и стили для использования в вашей теме."
+
+msgid "Failed to render the plugin"
+msgstr ""
 
 msgid "Content in this box is shown to all user types without limitations."
 msgstr ""
@@ -175,6 +184,12 @@ msgstr "дата"
 msgid "Theme configuration for %s"
 msgstr "Настройки темы %s"
 
+msgid "snippet name"
+msgstr ""
+
+msgid "Untitled"
+msgstr ""
+
 msgid "location"
 msgstr ""
 
@@ -188,9 +203,6 @@ msgid "themes"
 msgstr ""
 
 msgid "Snippet"
-msgstr ""
-
-msgid "Snippet for {} in {}"
 msgstr ""
 
 msgid "Plugin"
@@ -299,6 +311,9 @@ msgstr ""
 
 msgid "In-Place Snippet"
 msgstr "Существующий образец"
+
+msgid "Resource snippet for start of head"
+msgstr ""
 
 msgid "Resource snippet for end of head"
 msgstr "Образец ресурса для конца заглавия"

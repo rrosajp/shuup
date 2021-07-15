@@ -8,10 +8,262 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 List all changes after the last release here (newer on top). Each change on a separate bullet point line
 
+## [2.12.0] - 2021-07-15
+
 ### Fixed
 
-- Fix the order detail template
-- Pass languages to the TaxClassFormPart to show multilanguage forms
+- Front: SupplierProductListFilter to take all vendors from the category and all sub categories
+- Front: Fix the alert class when it is an error
+- Xtheme: only use the id attribute if the variable is a Product instance in Async Product Cross Sells plugin
+- Reports: do not catch generic `Exception` to prevent hiding other issues
+
+### Changed
+
+- Core: reuse existing `ProductVariationResult` when a combination hash matches
+
+### Added
+
+- Front: add timezone view to save the user's current timezone
+
+## [2.11.0] - 2021-07-07
+
+### Added
+
+- GDPR: create a snippet blocker to prevent injection when cookie is not consented
+- Xtheme: create `xtheme_snippet_blocker` provides to allow blocking a global script injection
+- Xtheme: add name a `Snippet` object
+- Reports: add CSV report writer
+
+### Fixed
+
+- Front: fix so orders that are canceled can't be payed for
+- General: fix critical vulnerability on views that were returning not escaped content making it open to XSS attacks
+- Admin: fix code mirror destruction by node id
+
+### Changed
+
+- Reports: clean malicius content from the HTML and CSV exporters
+- Reports: prevent formulas from being exported in excel writer
+- Tests: log errors into a log file
+- Admin: hide email template button based on permission
+- Reports: improve log when an importer fails
+
+## [2.10.8] - 2021-06-30
+
+### Changed
+
+- Pull translations from Transifex
+
+## [2.10.7] - 2021-06-29
+
+
+### Changed
+
+- Core: only consider lines from the same supplier as the behavior component
+
+
+## [2.10.6] - 2021-06-25
+
+### Fixed
+
+- Utils: fix MultiLanguageModelForm so language dependent filed will only be required if the language is required
+
+## [2.10.5] - 2021-06-21
+
+### Fixed
+
+- Xtheme: removed orderable boolean from async highlights plugin from being rendered
+
+## [2.10.4] - 2021-06-21
+
+### Changed
+
+- Admin: show taxless order total column in order list
+
+## [2.10.3] - 2021-06-15
+
+### Fixed
+
+- Importer: fix so the correct context is displayed on first request when selecting importer
+
+## [2.10.2] - 2021-06-11
+
+### Added
+
+- Xtheme: Add so snippets can have start of head content
+
+### Fixed
+
+- Core: fix so task don't require a identifier
+
+## [2.10.1] - 2021-06-07
+
+### Fixed
+
+- SimpleSupplier: always return products as managed by using a different queryset
+
+## [2.10.0] - 2021-06-07
+
+### Removed
+
+- Admin: remove the provides to allow adding extra fields to the Attribute form
+
+### Add
+
+- Core: Allow a supplier to have multiple modules
+- Core: add option to store tasks in the database to collect results
+
+### Changed
+
+- General: pull translation strings from Transifex
+- Admin: filter products in list and edit views according to product kind listing name
+- Core: suppliers don't have default supplier modules anymore
+- Importers: enable importers to run asynchronously
+- Importers: change the admin views to show the list of import processes
+
+### Fixed
+
+- Admin: fix picotable overflow issue
+- Notify: always overrride the current notification data with the new one
+
+## [2.9.2] - 2021-05-26
+
+### Fixed
+
+- General: replace hash() with sha1() as Python's hash() function doesn't have a stable result across processes
+- Core: use SHA-1 to hash cache keys as Python's hash() function doesn't have a stable result across processes
+
+### Changed
+
+- Cache product orderability and prices using a list of user groups instead of per contact
+- Pull translation strings from Transifex
+
+## [2.9.1] - 2021-05-24
+
+### Fixed
+
+- Admin: add ordering to attribute filter, because of frontend related error
+
+## [2.9.0] - 2021-05-19
+
+### Added
+
+- Admin: add a method in AdminModule that allows returning help texts for permissions
+
+### Fixed
+
+- Notify: add notify styles to the script editor iframe to fix email editor size
+- Importer: use more bites in order to detect csv dialect in importer
+- Admin: save the current user menu using the current language
+
+### Changed
+
+- Pull DE translations from Transifex
+- Xtheme: allow async plugin to have orderable only flag set
+- Xtheme: use the current language as part of the plugins cache key
+
+## [2.8.3] - 2021-05-17
+
+### Fixed
+
+- Xtheme: use the context while generating the cache key
+- Xtheme: do not crash the whole site when a plugin fails to render
+- Admin: Force to parse reason as string before encoding the url
+
+## [2.8.2] - 2021-05-14
+
+### Fixed
+
+- Admin: force escape help texts which can contain `"` characters
+- Admin: show translation fields from all polymorphic models available
+- Xtheme: hash the cache key to prevent strings larger then 250 chars
+
+## [2.8.1] - 2021-05-11
+
+### Fixed
+
+- Xtheme: encode cache key into base64 to prevent issues with memcache
+
+## [2.8.0] - 2021-05-11
+
+### Changed
+
+- General: make some plugins cacheable
+- Xtheme: add attribute on every plugin to indicate whether it can be cached or not
+
+### Removed
+
+- Xtheme: removed the SHUUP_XTHEME_USE_PLACEHOLDER_CACHE setting and do not cache the entire placeholder content
+
+### Fixed
+
+- Core: implement choice attribute getter and setter correctly
+- Admin: collect translation strings from Shepard Tour
+
+## [2.7.3] - 2021-05-11
+
+### Fixed
+
+- Admin: use correct translated label syntax for form fields
+- Front: Remove untranslated Error! prefix in alert messages
+- Campaigns: fix the translation string format
+
+### Changed
+
+- General: use gettext_lazy to make sure translations work
+- Front: unify the Customer Information title across the dashboard
+- Front: bump bootstrap-select and use translated strings while initializing it
+
+## [2.7.2] - 2021-05-05
+
+### Fixed
+
+- Admin: Fix the Select2 translations strings
+- General: Collect translation strings correctly
+
+### Changed
+
+- General: Pull translation strings
+
+## [2.7.1] - 2021-05-04
+
+### Fixed
+
+- Core: do not use message tags as part of the message as it doesn't contain translated string
+- Core: fix the python string format syntax to format after resolving the translation string
+
+### Changed
+
+- Settings: add Portuguese (Portugal) as a language option
+
+## [2.7.0] - 2021-04-29
+
+### Added
+
+- Admin: New type of attribute: CHOICES
+- Admin: Selection of multiple choices from attribute for product
+- Front: Product filter by attribute choices
+
+### Changed
+
+- Pull strings from Transifex
+
+### Fixed
+
+- Reports: convert string into translated string
+- Update requirements to support Python3.6+
+- Fix mass editing validation for ManyToManyField fields.
+
+## [2.6.5] - 2021-04-22
+
+### Changed
+
+- Front: consider the supplier from context or kwargs while reversing the product url
+
+### Fixed
+
+- Front: Fix the order detail template
+- Admin: Pass languages to the TaxClassFormPart to show multilanguage forms
 
 ## [2.6.4] - 2021-04-19
 

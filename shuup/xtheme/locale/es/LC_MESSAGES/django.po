@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-03 13:32+0000\n"
-"PO-Revision-Date: 2021-02-04 14:15+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2021-07-06 22:55+0000\n"
+"PO-Revision-Date: 2021-07-07 18:01+0000\n"
+"Last-Translator: Christian Hess\n"
 "Language-Team: Spanish (http://www.transifex.com/shuup/shuup/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,6 +66,12 @@ msgstr "Selecciona los temas que tendrán este fragmento incrustado. Déjalo en 
 msgid "Select the location of the page to inject the snippet."
 msgstr "Selecciona la ubicación de la página para incrustar el fragmento."
 
+msgid "Name"
+msgstr ""
+
+msgid "Filter by name..."
+msgstr ""
+
 msgid "Location"
 msgstr "Ubicacióin"
 
@@ -95,6 +101,9 @@ msgstr "Hojas de estilo"
 
 msgid "The fonts, colors, and styles to use with your theme."
 msgstr "Las fuentes, colores y estilos para usar en tu tema."
+
+msgid "Failed to render the plugin"
+msgstr ""
 
 msgid "Content in this box is shown to all user types without limitations."
 msgstr "El contenido en esta caja se muestra a todos los usuarios sin limitaciones."
@@ -174,6 +183,12 @@ msgstr "datos"
 msgid "Theme configuration for %s"
 msgstr "Configuración de tema para %s"
 
+msgid "snippet name"
+msgstr ""
+
+msgid "Untitled"
+msgstr ""
+
 msgid "location"
 msgstr "ubicación"
 
@@ -188,9 +203,6 @@ msgstr "temas"
 
 msgid "Snippet"
 msgstr "Fragmento de código"
-
-msgid "Snippet for {} in {}"
-msgstr "Fragmento de código para {} en {}"
 
 msgid "Plugin"
 msgstr "Plugin"
@@ -298,6 +310,9 @@ msgstr ""
 
 msgid "In-Place Snippet"
 msgstr "Fragmento de código `In-Place`"
+
+msgid "Resource snippet for start of head"
+msgstr ""
 
 msgid "Resource snippet for end of head"
 msgstr "Fragmento de código para el final del encabezado"

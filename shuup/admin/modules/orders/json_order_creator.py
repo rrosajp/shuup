@@ -11,7 +11,7 @@ from copy import deepcopy
 from django import forms
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from shuup.core.models import (
     CompanyContact,
@@ -471,4 +471,4 @@ class JsonOrderCreator(object):
             product = Product.objects.get(id=prod_id)
             shop_product = product.get_shop_instance(shop)
             for supplier in shop_product.suppliers.enabled():
-                supplier.module.update_stock(product.id)
+                supplier.update_stock(product.id)

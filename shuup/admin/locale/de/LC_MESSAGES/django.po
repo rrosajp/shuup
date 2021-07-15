@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2015 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Christian Hess, 2021
 # Melanie Missbach <melanie@buyhappy.de>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Shuup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 10:42+0000\n"
-"PO-Revision-Date: 2021-04-16 19:20+0000\n"
-"Last-Translator: Melanie Missbach <melanie@buyhappy.de>\n"
+"POT-Creation-Date: 2021-06-17 12:49+0000\n"
+"PO-Revision-Date: 2021-06-17 15:19+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/shuup/shuup/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -203,7 +204,7 @@ msgid "hide prices"
 msgstr "Preise ausblenden"
 
 msgid "shop"
-msgstr "einkaufen"
+msgstr "anlegen"
 
 msgid "Price display mode"
 msgstr "Preisanzeige-Modus"
@@ -804,8 +805,11 @@ msgstr "Bezahlstatus"
 msgid "Shipping Status"
 msgstr "Versandstatus"
 
-msgid "Total"
-msgstr "Gesamtsumme"
+msgid "Total, incl. tax"
+msgstr ""
+
+msgid "Total, excl. tax"
+msgstr ""
 
 #, python-format
 msgid "Create Payment -- %s"
@@ -909,6 +913,12 @@ msgstr "Es konnte keine komplette Rückerstattung erstellt werden."
 msgid "Full refund created."
 msgstr "Komplette Rückerstattung erstellt."
 
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Tracking Code"
+msgstr "Tracking-Code"
+
 msgid "Tracking URL"
 msgstr "Tracking-URL"
 
@@ -945,9 +955,6 @@ msgstr "ID"
 
 msgid "Supplier"
 msgstr "Händler"
-
-msgid "Tracking Code"
-msgstr "Tracking-Code"
 
 #, python-brace-format
 msgid "Shipment {shipment_id}"
@@ -1537,10 +1544,6 @@ msgstr "Ist freigegeben für {}"
 msgid "Indicates whether this supplier is approved for the shop."
 msgstr "Zeigt an, ob dieser Händler für den Marktplatz freigegeben ist."
 
-#, python-format
-msgid "No %s module"
-msgstr "Kein %s Modul"
-
 msgid "It is not possible to manage inventory when no module is selected."
 msgstr "Es ist nicht möglich, den Bestand zu verwalten, wenn kein Modul ausgewählt ist."
 
@@ -1551,8 +1554,12 @@ msgstr "{}  befindet sich nicht im Feld \"Marktplatz\"."
 msgid "Success! %s has been marked deleted."
 msgstr "Das war erfolgreich! %s wurde als gelöscht markiert."
 
-msgid "Module"
-msgstr "Modul"
+msgid "Modules"
+msgstr "Module"
+
+#, python-format
+msgid "No %s module"
+msgstr "Kein %s Modul"
 
 msgid "Shuup Support"
 msgstr "Shuup Support"
@@ -1585,6 +1592,33 @@ msgstr "Steuersatz"
 
 msgid "Users"
 msgstr "Benutzer"
+
+msgid "Allow the user to change the passwords of other users."
+msgstr "Ermöglichen Sie dem Benutzer, die Kennwörter anderer Benutzer zu ändern."
+
+msgid "Allow the user send the reset password email."
+msgstr "Ermöglichen Sie dem Benutzer, die E-Mail zum Zurücksetzen des Kennworts zu senden."
+
+msgid "Allow the user to change the permission groups of other users."
+msgstr "Ermöglichen Sie dem Benutzer, die Berechtigungsgruppen anderer Benutzer zu ändern."
+
+msgid "Allow the user to see a user detail."
+msgstr "Ermöglichen Sie dem Benutzer, ein Benutzerdetail anzuzeigen."
+
+msgid "Allow the user to create a new user."
+msgstr "Ermöglichen Sie dem Benutzer, einen neuen Benutzer zu erstellen."
+
+msgid "Allow the user to list the users."
+msgstr "Ermöglichen Sie dem Benutzer, die Benutzer aufzulisten."
+
+msgid "Allow the user to impersonate a different user."
+msgstr "Ermöglichen Sie dem Benutzer, sich als ein anderer Benutzer auszugeben."
+
+msgid "Allow the user to impersonate a staff user."
+msgstr "Ermöglichen Sie dem Benutzer, sich als Mitarbeiter auszugeben."
+
+msgid "Allow the user to change the user list columns."
+msgstr "Ermöglichen Sie dem Benutzer, die Spalten der Benutzerliste zu ändern."
 
 msgid "Add some users to help manage your shop"
 msgstr "Füge Benutzer hinzu, die Dir bei der Verwaltung Deines Marktplatzes helfen"
@@ -1620,7 +1654,7 @@ msgid ""
 "Two fundamental permissions: Access to Admin Panel and Superuser status "
 "rights. Go to user account -> `Actions` -> `Edit Main Permissions` to change"
 " these."
-msgstr "Zwei grundlegende Berechtigungen: Zugriff auf das Admin-Panel und Superuser-Statusrechte. Gehe zu Benutzerkonto -> \"Aktionen\" -> \"Hauptrechte bearbeiten\", um diese zu ändern."
+msgstr "Zwei grundlegende Berechtigungen: Zugriff auf den Administrationsbereich (Admin-Panel) und Superuser-Statusrechte. Gehe zu Benutzerkonto -> \"Aktionen\" -> \"Hauptrechte bearbeiten\", um diese zu ändern."
 
 msgid ""
 "Use Permission Groups to granularly give more permissions. Search for "
@@ -1641,7 +1675,7 @@ msgid "The last name of the user."
 msgstr "Der Nachname des Benutzers."
 
 msgid "Access to Admin Panel"
-msgstr "Zugriff auf das Admin-Panel"
+msgstr "Zugriff auf den Administrationsbereich (Admin-Panel)"
 
 msgid "Superuser (Full rights)"
 msgstr "Superuser (volle Rechte)"
@@ -1661,7 +1695,7 @@ msgstr "Bestätigung per E-Mail senden"
 msgid ""
 "Send an email to the user to let them know they've been added as a shop "
 "user. Applicable only for users with Access to Admin Panel status."
-msgstr "Sende eine E-Mail an den Benutzer, um ihn darüber zu informieren, dass er als Marktplatz-Benutzer hinzugefügt wurde. Gilt nur für Benutzer mit dem Status Zugriff auf das Admin-Panel."
+msgstr "Sende eine E-Mail an den Benutzer, um ihn darüber zu informieren, dass er als Marktplatz-Benutzer hinzugefügt wurde. Gilt nur für Benutzer mit dem Status Zugriff auf den Administrationsbereich (Admin-Panel)."
 
 msgid "Please enter an email to send a confirmation to."
 msgstr "Bitte gibt eine E-Mail-Adresse ein, an die eine Bestätigung gesendet werden soll."
@@ -1800,13 +1834,13 @@ msgid ""
 msgstr "Gibt an, ob dieser Benutzer alle Berechtigungen hat, ohne sie explizit zuzuweisen. Das Zuweisen von granularen Berechtigungsgruppen an einen Superuser hat keine Auswirkung, da granulare Berechtigungsgruppen nur mehr Rechte vergeben können, der Superuser aber bereits alle Rechte besitzt."
 
 msgid "Access to Admin Panel status"
-msgstr "Zugriff auf den Status des Admin-Panels"
+msgstr "Zugriff auf den Status des Administrationsbereichs (Admin-Panel)"
 
 msgid ""
 "Designates whether this user can log into this admin site. Even Superusers "
 "should have this status enabled, otherwise they won't be able to access the "
 "Admin Panel."
-msgstr "Gibt an, ob sich dieser Benutzer an dieser Admin-Seite anmelden darf. Auch Superuser sollten diesen Status aktiviert haben, da sie sonst nicht auf das Admin-Panel zugreifen können."
+msgstr "Gibt an, ob sich dieser Benutzer an dieser Admin-Seite anmelden darf. Auch Superuser sollten diesen Status aktiviert haben, da sie sonst nicht auf den Administrationsbereich (Admin-Panel) zugreifen können."
 
 msgid ""
 "Use Permission Groups to granularly give more permissions. User can belong "
@@ -1836,13 +1870,19 @@ msgid "Permissions changed for %s."
 msgstr "Berechtigungen geändert für %s."
 
 msgid "You must have the Access to Admin Panel permission."
-msgstr "Du musst die Berechtigung \"Zugriff auf Admin-Panel\" besitzen."
+msgstr "Du musst die Berechtigung \"Zugriff auf den Administrationsbereich (Admin-Panel)\" besitzen."
 
 msgid "You must have the Access to Admin Panel permissions to this shop."
-msgstr "Du musst  für diesen Marktplatz die Berechtigung \"Zugriff auf das Admin-Panel\" besitzen."
+msgstr "Du musst  für diesen Marktplatz die Berechtigung \"Zugriff auf den Administrationsbereich (Admin-Panel)\" besitzen."
 
-msgid "New Attribute"
-msgstr "Neues Merkmal"
+msgid "General Information"
+msgstr "Allgemeines"
+
+msgid "Choice Options"
+msgstr "Auswahlmöglichkeiten"
+
+msgid "Add new option"
+msgstr "Neue Auswahlmöglichkeit hinzufügen"
 
 msgid "Login"
 msgstr "Anmelden"
@@ -1923,9 +1963,6 @@ msgstr "Einleitung anzeigen"
 
 msgid "Log out"
 msgstr "Abmelden"
-
-msgid "General Information"
-msgstr "Allgemeines"
 
 msgid "Copy visibility settings to products"
 msgstr "Kopieren der Anzeigeeinstellungen auf die Artikel"
@@ -2993,6 +3030,9 @@ msgstr "Lass uns einige der Dinge durchgehen, die Du hier tun kannst. Klicke auf
 msgid "Date"
 msgstr "Datum"
 
+msgid "Total"
+msgstr "Gesamtsumme"
+
 msgid "Save and Exit"
 msgstr "Speichern und Verlassen"
 
@@ -3035,9 +3075,6 @@ msgstr "Kommentar wurde gespeichert."
 
 msgid "Updating the admin comment failed."
 msgstr "Das Aktualisieren des Admin-Kommentars ist fehlgeschlagen."
-
-msgid "Description"
-msgstr "Beschreibung"
 
 msgid "No payments have been created yet."
 msgstr "Es wurden noch keine Zahlungen erstellt."
@@ -3103,7 +3140,7 @@ msgid "Taxless Discount"
 msgstr "Steuerfreier Rabatt"
 
 msgid "Taxless Discount Percentage"
-msgstr "Steuerfreier Rabatt in %"
+msgstr "Steuerfreier Rabatt Prozentsatz"
 
 msgid "Tax"
 msgstr "Steuern"
@@ -3578,8 +3615,8 @@ msgstr "Telemetriedaten"
 msgid "Here is an example of the data that would be submitted right now."
 msgstr "Hier ist ein Beispiel für die Daten, die jetzt übermittelt werden würden."
 
-msgid "User Information"
-msgstr "Benutzerdaten"
+msgid "Customer Information"
+msgstr "Kundeninformation"
 
 #, python-format
 msgid "Send a password reset email to %(email)s?"
@@ -3647,7 +3684,7 @@ msgstr "Anmelden, um fortzufahren."
 msgid ""
 "Your account must have `Access to Admin Panel` permissions to access this "
 "page."
-msgstr "Dein Konto muss über die Berechtigung \"Zugriff auf das Admin-Panel\" verfügen, um auf diese Seite zugreifen zu können."
+msgstr "Dein Konto muss über die Berechtigung \"Zugriff auf den Administrationsbereich (Admin-Panel)\" verfügen, um auf diese Seite zugreifen zu können."
 
 msgid "There is no active shop available. Contact support for more details."
 msgstr "Es ist kein aktiver Marktplatz verfügbar. Für weitere Details, kontaktiere bitte den Support."
